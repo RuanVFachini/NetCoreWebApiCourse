@@ -1,6 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WebApiCourse.Domain\WebApiCourse.Domain.csproj" />
   </ItemGroup>
 
