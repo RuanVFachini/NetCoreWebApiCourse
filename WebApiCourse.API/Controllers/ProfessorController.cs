@@ -50,7 +50,7 @@ namespace WebApiCourse.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpPut("{id:int}")]
+        [HttpPatch("{id:int}")]
         public IActionResult Patch([FromRoute] int id, [FromBody] Professor model)
         {
             return NoContent();

@@ -1,5 +1,7 @@
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApiCourse.API.Data;
 using WebApiCourse.Domain.Models;
 
 namespace WebApiCourse.API.Controllers
@@ -8,9 +10,11 @@ namespace WebApiCourse.API.Controllers
     [ApiController]
     public class AlunoController : ControllerBase
     {
-        public AlunoController()
+        private readonly ApplicationContext _context;
+
+        public AlunoController(ApplicationContext context)
         {
-            
+            _context = context;
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -18,7 +22,7 @@ namespace WebApiCourse.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok();
+            return Ok(_context.Aluno.ToList());
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -27,7 +31,11 @@ namespace WebApiCourse.API.Controllers
         [HttpGet("{id:int}")]
         public IActionResult Get([FromRoute] int id)
         {
-            return Ok();
+            var aluno = _context.Aluno.FirstOrDefault(x => x.Id == id);
+
+            if (aluno == null) return NotFound();
+
+            return Ok(aluno);
         }
 
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -50,7 +58,7 @@ namespace WebApiCourse.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpPut("{id:int}")]
+        [HttpPatch("{id:int}")]
         public IActionResult Patch([FromRoute] int id, [FromBody] Aluno model)
         {
             return NoContent();

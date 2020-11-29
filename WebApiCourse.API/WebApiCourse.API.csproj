@@ -1,19 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
-	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0"/>
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\WebApiCourse.Domain\WebApiCourse.Domain.csproj" />
+    <ProjectReference Include="..\WebApiCourse.Domain\WebApiCourse.Domain.csproj"/>
   </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
-
 </Project>
