@@ -1,6 +1,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApiCourse.API.Data;
 using WebApiCourse.Domain.Models;
 
@@ -29,7 +30,7 @@ namespace WebApiCourse.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("{id:int}")]
-        public IActionResult Get([FromRoute] int id)
+        public IActionResult GetById([FromRoute] int id)
         {
             var aluno = _context.Aluno.FirstOrDefault(x => x.Id == id);
 
@@ -43,15 +44,24 @@ namespace WebApiCourse.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Aluno model)
         {
-            return Created("", model);
+            _context.Add(model);
+            _context.SaveChanges();
+            return Created(nameof(GetById), model);
         }
 
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPut("{id:int}")]
-        public IActionResult Post([FromRoute] int id, [FromBody] Aluno model)
+        public IActionResult Put([FromRoute] int id, [FromBody] Aluno model)
         {
+            var aluno = _context.Aluno.AsNoTracking().FirstOrDefault(x => x.Id == id);
+
+            if (aluno == null) return NotFound();
+
+            _context.Update(model);
+            _context.SaveChanges();
+            
             return NoContent();
         }
 
@@ -61,6 +71,13 @@ namespace WebApiCourse.API.Controllers
         [HttpPatch("{id:int}")]
         public IActionResult Patch([FromRoute] int id, [FromBody] Aluno model)
         {
+            var aluno = _context.Aluno.FirstOrDefault(x => x.Id == id);
+
+            if (aluno == null) return NotFound();
+
+            _context.Update(model);
+            _context.SaveChanges();
+
             return NoContent();
         }
         
@@ -70,6 +87,12 @@ namespace WebApiCourse.API.Controllers
         [HttpDelete("{id}:int")]
         public IActionResult Delete([FromRoute] int id)
         {
+            var aluno = _context.Aluno.FirstOrDefault(x => x.Id == id);
+            
+            if (aluno == null) return NotFound();
+            
+            _context.Remove(aluno);
+            
             return NoContent();
         }
 
