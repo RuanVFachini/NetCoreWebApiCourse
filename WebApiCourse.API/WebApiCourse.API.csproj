@@ -5,6 +5,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10"/>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.10"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebApiCourse.Domain\WebApiCourse.Domain.csproj"/>

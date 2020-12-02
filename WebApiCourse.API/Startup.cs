@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApiCourse.API.Data;
+using WebApiCourse.API.Data.Repositories;
 
 namespace WebApiCourse.API
 {
@@ -31,9 +32,19 @@ namespace WebApiCourse.API
                 options.UseSqlite(Configuration.GetConnectionString("Default"))
             );
 
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
+            services.AddScoped<IProfessorRepository, ProfessorRepository>();
+            services.AddScoped<IDisciplinaRepository, DisciplinaRepository>();
+
             services.AddSwaggerGen();
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(opt => 
+                {
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                    opt.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
