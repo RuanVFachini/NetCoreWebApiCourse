@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiCourse.API", "WebApiCourse.API\WebApiCourse.API.csproj", "{6C5431BA-61C6-4AE7-A9CD-E4156D1639FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiCourse.Domain", "WebApiCourse.Domain\WebApiCourse.Domain.csproj", "{C7311B82-E460-4756-B7BA-419C1E4C24FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiCourse.Domain", "WebApiCourse.Domain\WebApiCourse.Domain.csproj", "{C7311B82-E460-4756-B7BA-419C1E4C24FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

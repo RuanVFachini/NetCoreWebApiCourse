@@ -86,7 +86,7 @@ namespace WebApiCourse.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpDelete("{id}:int")]
+        [HttpDelete("{id:int}")]
         public IActionResult Delete([FromRoute] int id)
         {
             var professor = _repository.GetById(id);
