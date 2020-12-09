@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
 using WebApiCourse.API.Data;
 using WebApiCourse.API.Data.Repositories;
 using WebApiCourse.API.DTO;
@@ -11,7 +12,8 @@ using WebApiCourse.Domain.Models;
 
 namespace WebApiCourse.API.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class AlunoController : ControllerBase
     {
@@ -24,6 +26,7 @@ namespace WebApiCourse.API.Controllers
             _mapper = mapper;
         }
 
+        [SwaggerOperation(Summary = "Get a list of all Alunos")]
         [ProducesResponseType(typeof(IEnumerable<AlunoDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
@@ -32,6 +35,7 @@ namespace WebApiCourse.API.Controllers
             return Ok(_mapper.Map<IEnumerable<AlunoDTO>>(_repository.ToList()));
         }
 
+        [SwaggerOperation(Summary = "Get a specifique Aluno")]
         [ProducesResponseType(typeof(AlunoDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -45,6 +49,7 @@ namespace WebApiCourse.API.Controllers
             return Ok(_mapper.Map<AlunoDTO>(aluno));
         }
 
+        [SwaggerOperation(Summary = "Create a new Aluno record")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
@@ -56,6 +61,7 @@ namespace WebApiCourse.API.Controllers
             return Created(nameof(GetById), model);
         }
 
+        [SwaggerOperation(Summary = "Full Update for specific Aluno record")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -75,6 +81,7 @@ namespace WebApiCourse.API.Controllers
             return NoContent();
         }
 
+        [SwaggerOperation(Summary = "Partial Update for specific Aluno record")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -93,6 +100,7 @@ namespace WebApiCourse.API.Controllers
             return NoContent();
         }
         
+        [SwaggerOperation(Summary = "Delete a specific Aluno record")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
