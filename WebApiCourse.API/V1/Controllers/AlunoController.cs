@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
+using WebApiCourse.API.Config;
 using WebApiCourse.API.Data;
 using WebApiCourse.API.Data.Repositories;
+using WebApiCourse.API.ExtensionsMethods;
 using WebApiCourse.API.V1.DTO;
 using WebApiCourse.Domain.Models;
 
@@ -31,9 +33,14 @@ namespace WebApiCourse.API.V1.Controllers
         [ProducesResponseType(typeof(IEnumerable<AlunoDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] PageParams pageParams)
         {
-            return Ok(_mapper.Map<IEnumerable<AlunoDTO>>(await _repository.FindAllAsync()));
+            var alunos = await _repository.FindAllAsync(pageParams);
+            var result = _mapper.Map<IEnumerable<AlunoDTO>>(alunos);
+
+            Response.AddPagination(alunos.CurrentPage, alunos.PageSize, alunos.TotalCount, alunos.TotalPages);
+
+            return Ok(result);
         }
 
         [SwaggerOperation(Summary = "Get a specifique Aluno")]

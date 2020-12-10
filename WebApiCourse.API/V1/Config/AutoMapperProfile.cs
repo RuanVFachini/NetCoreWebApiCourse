@@ -21,6 +21,7 @@ namespace WebApiCourse.API.V1.Config
             
             CreateMap<AlunoRequestDTO, Aluno>();
 
+            CreateMap<AlunoDisciplina, AlunoDisciplinaDTO>().ReverseMap();
         }
     }
 }

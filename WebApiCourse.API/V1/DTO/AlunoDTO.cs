@@ -16,6 +16,6 @@ namespace WebApiCourse.API.V1.DTO
         public DateTime DataInicio { get; set; }
         public DateTime? DataFim { get; set; }
         public bool IsActive { get; set; }
-        public IEnumerable<AlunoDisciplina> AlunoDisciplinas { get; set; }
+        public IEnumerable<AlunoDisciplinaDTO> AlunoDisciplinas { get; set; }
     }
 }

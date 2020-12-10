@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using WebApiCourse.API.Config;
+using WebApiCourse.API.Helpers;
 using WebApiCourse.Domain.Models;
 
 namespace WebApiCourse.API.Data.Repositories
@@ -13,14 +15,15 @@ namespace WebApiCourse.API.Data.Repositories
         {
         }
 
-        public IEnumerable<Aluno> FindAll()
+        public ICollection<Aluno> FindAll()
         {
-            return _context.Set<Aluno>().ToList();
+            return _context.Set<Aluno>().Include(x => x.AlunoDisciplinas).ToList();
         }
 
-        public async Task<IEnumerable<Aluno>> FindAllAsync()
+        public async Task<PageList<Aluno>> FindAllAsync(PageParams pageParams)
         {
-            return await _context.Set<Aluno>().ToListAsync();
+            var query = _context.Set<Aluno>().Include(x => x.AlunoDisciplinas).AsQueryable<Aluno>();
+            return await PageList<Aluno>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
 
         public Aluno GetByDisciplina(int disciplinaId, bool incluirProfessor)
@@ -43,11 +46,6 @@ namespace WebApiCourse.API.Data.Repositories
         public override Aluno GetById(int id)
         {
             return _context.Aluno.AsQueryable().Include(x => x.AlunoDisciplinas).FirstOrDefault();
-        }
-
-        public override ICollection<Aluno> ToList()
-        {
-            return _context.Aluno.AsQueryable().Include(x => x.AlunoDisciplinas).ToList();
         }
     }
 }
