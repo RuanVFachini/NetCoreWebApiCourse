@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Swashbuckle.AspNetCore.Annotations;
 using WebApiCourse.Domain.Models;
 
-namespace WebApiCourse.API.DTO
+namespace WebApiCourse.API.V1.DTO
 {
     public class AlunoDTO
     {

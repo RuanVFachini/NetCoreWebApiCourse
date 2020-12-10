@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApiCourse.API.DTO
+namespace WebApiCourse.API.V1.DTO
 {
     public class AlunoRequestDTO
     {

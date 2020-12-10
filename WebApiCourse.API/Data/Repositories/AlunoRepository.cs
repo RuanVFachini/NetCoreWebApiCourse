@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebApiCourse.Domain.Models;
 
@@ -10,6 +11,16 @@ namespace WebApiCourse.API.Data.Repositories
     {
         public AlunoRepository(ApplicationContext context) : base(context)
         {
+        }
+
+        public IEnumerable<Aluno> FindAll()
+        {
+            return _context.Set<Aluno>().ToList();
+        }
+
+        public async Task<IEnumerable<Aluno>> FindAllAsync()
+        {
+            return await _context.Set<Aluno>().ToListAsync();
         }
 
         public Aluno GetByDisciplina(int disciplinaId, bool incluirProfessor)

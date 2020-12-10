@@ -7,7 +7,7 @@ using WebApiCourse.API.Data;
 using WebApiCourse.API.Data.Repositories;
 using WebApiCourse.Domain.Models;
 
-namespace WebApiCourse.API.Controllers
+namespace WebApiCourse.API.V1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

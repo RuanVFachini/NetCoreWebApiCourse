@@ -1,9 +1,9 @@
 using AutoMapper;
-using WebApiCourse.API.DTO;
+using WebApiCourse.API.V1.DTO;
 using WebApiCourse.API.ExtensionsMethods;
 using WebApiCourse.Domain.Models;
 
-namespace WebApiCourse.API.Config
+namespace WebApiCourse.API.V1.Config
 {
     public class AutoMapperProfile : Profile
     {

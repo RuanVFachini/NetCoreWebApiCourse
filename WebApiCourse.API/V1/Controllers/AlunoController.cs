@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,10 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
 using WebApiCourse.API.Data;
 using WebApiCourse.API.Data.Repositories;
-using WebApiCourse.API.DTO;
+using WebApiCourse.API.V1.DTO;
 using WebApiCourse.Domain.Models;
 
-namespace WebApiCourse.API.Controllers
+namespace WebApiCourse.API.V1.Controllers
 {
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
@@ -30,9 +31,9 @@ namespace WebApiCourse.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<AlunoDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_mapper.Map<IEnumerable<AlunoDTO>>(_repository.ToList()));
+            return Ok(_mapper.Map<IEnumerable<AlunoDTO>>(await _repository.FindAllAsync()));
         }
 
         [SwaggerOperation(Summary = "Get a specifique Aluno")]
