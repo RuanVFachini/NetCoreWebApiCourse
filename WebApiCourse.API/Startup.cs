@@ -32,7 +32,7 @@ namespace WebApiCourse.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(options => 
-                options.UseSqlite(Configuration.GetConnectionString("Default"))
+                options.UseMySql(Configuration.GetConnectionString("MysqlConnection"))
             );
 
             services.AddScoped<IAlunoRepository, AlunoRepository>();

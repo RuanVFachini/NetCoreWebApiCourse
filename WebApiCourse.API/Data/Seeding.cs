@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using WebApiCourse.Domain.Models;
 
@@ -38,16 +39,16 @@ namespace WebApiCourse.API.Data
                     new Disciplina(9, "Programação", 5, 2),
                     new Disciplina(10, "Programação", 5, 3)
                 });
-            
-            builder.Entity<Aluno>()
+                
+                builder.Entity<Aluno>()
                 .HasData(new List<Aluno>(){
-                    new Aluno(1, "Marta", "Kent", "33225555", "ADBC254845", DateTime.Parse("05/08/2005")),
-                    new Aluno(2, "Paula", "Isabela", "3354288", "ADBC254846", DateTime.Parse("25/07/2000")),
-                    new Aluno(3, "Laura", "Antonia", "55668899", "ADBC254847", DateTime.Parse("05/08/2002")),
-                    new Aluno(4, "Luiza", "Maria", "6565659", "ADBC254848", DateTime.Parse("09/08/2005")),
-                    new Aluno(5, "Lucas", "Machado", "565685415", "ADBC254849", DateTime.Parse("03/01/2002")),
-                    new Aluno(6, "Pedro", "Alvares", "456454545", "ADBC254850", DateTime.Parse("12/03/2005")),
-                    new Aluno(7, "Paulo", "José", "9874512", "ADBC254851", DateTime.Parse("17/06/2000"))
+                    new Aluno(1, "Marta", "Kent", "33225555", "ADBC254845", DateTime.Parse("05/08/2005", CultureInfo.CreateSpecificCulture("pt-BR"))),
+                    new Aluno(2, "Paula", "Isabela", "3354288", "ADBC254846", DateTime.Parse("05/08/2005", CultureInfo.CreateSpecificCulture("pt-BR"))),
+                    new Aluno(3, "Laura", "Antonia", "55668899", "ADBC254847", DateTime.Parse("05/08/2002", CultureInfo.CreateSpecificCulture("pt-BR"))),
+                    new Aluno(4, "Luiza", "Maria", "6565659", "ADBC254848", DateTime.Parse("09/08/2005", CultureInfo.CreateSpecificCulture("pt-BR"))),
+                    new Aluno(5, "Lucas", "Machado", "565685415", "ADBC254849", DateTime.Parse("03/01/2002", CultureInfo.CreateSpecificCulture("pt-BR"))),
+                    new Aluno(6, "Pedro", "Alvares", "456454545", "ADBC254850", DateTime.Parse("12/03/2005", CultureInfo.CreateSpecificCulture("pt-BR"))),
+                    new Aluno(7, "Paulo", "José", "9874512", "ADBC254851", DateTime.Parse("05/08/2005", CultureInfo.CreateSpecificCulture("pt-BR")))
                 });
 
             builder.Entity<AlunoDisciplina>()

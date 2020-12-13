@@ -9,44 +9,45 @@ using WebApiCourse.API.Data;
 namespace WebApiCourse.API.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20201207174317_Initial")]
-    partial class Initial
+    [Migration("20201211201050_initMysql")]
+    partial class initMysql
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.10");
+                .HasAnnotation("ProductVersion", "3.1.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("WebApiCourse.Domain.Models.Aluno", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DataFim")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataInicio")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataNasc")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Matricula")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Sobrenome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -56,7 +57,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 1,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(5742),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(56),
                             DataNasc = new DateTime(2005, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Matricula = "ADBC254845",
@@ -67,8 +68,8 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 2,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(7273),
-                            DataNasc = new DateTime(2000, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(2178),
+                            DataNasc = new DateTime(2005, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Matricula = "ADBC254846",
                             Nome = "Paula",
@@ -78,7 +79,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 3,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(7341),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(2595),
                             DataNasc = new DateTime(2002, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Matricula = "ADBC254847",
@@ -89,7 +90,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 4,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(7348),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(2939),
                             DataNasc = new DateTime(2005, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Matricula = "ADBC254848",
@@ -100,7 +101,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 5,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(7353),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(3232),
                             DataNasc = new DateTime(2002, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Matricula = "ADBC254849",
@@ -111,7 +112,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 6,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(7361),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(3567),
                             DataNasc = new DateTime(2005, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Matricula = "ADBC254850",
@@ -122,8 +123,8 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 7,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(7367),
-                            DataNasc = new DateTime(2000, 6, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(3902),
+                            DataNasc = new DateTime(2005, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Matricula = "ADBC254851",
                             Nome = "Paulo",
@@ -135,19 +136,19 @@ namespace WebApiCourse.API.Migrations
             modelBuilder.Entity("WebApiCourse.Domain.Models.AlunoCurso", b =>
                 {
                     b.Property<int>("AlunoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("CursoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DataFim")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataIni")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("AlunoId", "CursoId");
 
@@ -159,19 +160,19 @@ namespace WebApiCourse.API.Migrations
             modelBuilder.Entity("WebApiCourse.Domain.Models.AlunoDisciplina", b =>
                 {
                     b.Property<int>("AlunoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("DisciplinaId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DataFim")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataIni")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<decimal?>("Nota")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("decimal(65,30)");
 
                     b.HasKey("AlunoId", "DisciplinaId");
 
@@ -184,139 +185,139 @@ namespace WebApiCourse.API.Migrations
                         {
                             AlunoId = 1,
                             DisciplinaId = 2,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(8684)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5173)
                         },
                         new
                         {
                             AlunoId = 1,
                             DisciplinaId = 4,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9267)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5781)
                         },
                         new
                         {
                             AlunoId = 1,
                             DisciplinaId = 5,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9302)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5810)
                         },
                         new
                         {
                             AlunoId = 2,
                             DisciplinaId = 1,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9303)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5812)
                         },
                         new
                         {
                             AlunoId = 2,
                             DisciplinaId = 2,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9305)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5814)
                         },
                         new
                         {
                             AlunoId = 2,
                             DisciplinaId = 5,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9369)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5820)
                         },
                         new
                         {
                             AlunoId = 3,
                             DisciplinaId = 1,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9371)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5822)
                         },
                         new
                         {
                             AlunoId = 3,
                             DisciplinaId = 2,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9372)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5824)
                         },
                         new
                         {
                             AlunoId = 3,
                             DisciplinaId = 3,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9374)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5877)
                         },
                         new
                         {
                             AlunoId = 4,
                             DisciplinaId = 1,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9376)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5882)
                         },
                         new
                         {
                             AlunoId = 4,
                             DisciplinaId = 4,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9378)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5884)
                         },
                         new
                         {
                             AlunoId = 4,
                             DisciplinaId = 5,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9379)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5886)
                         },
                         new
                         {
                             AlunoId = 5,
                             DisciplinaId = 4,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9381)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5887)
                         },
                         new
                         {
                             AlunoId = 5,
                             DisciplinaId = 5,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9382)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5889)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 1,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9383)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5891)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 2,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9385)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5893)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 3,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9386)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5895)
                         },
                         new
                         {
                             AlunoId = 6,
                             DisciplinaId = 4,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9388)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5898)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 1,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9390)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5900)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 2,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9391)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5902)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 3,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9393)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5903)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 4,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9394)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5905)
                         },
                         new
                         {
                             AlunoId = 7,
                             DisciplinaId = 5,
-                            DataIni = new DateTime(2020, 12, 7, 14, 43, 17, 86, DateTimeKind.Local).AddTicks(9395)
+                            DataIni = new DateTime(2020, 12, 11, 17, 10, 50, 331, DateTimeKind.Local).AddTicks(5907)
                         });
                 });
 
@@ -324,10 +325,10 @@ namespace WebApiCourse.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -355,22 +356,22 @@ namespace WebApiCourse.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("CH")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("CursoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int?>("PrerequisitoId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("ProfessorId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -469,28 +470,28 @@ namespace WebApiCourse.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DataFim")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataInicio")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Registro")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Sobrenome")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -500,7 +501,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 1,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 82, DateTimeKind.Local).AddTicks(1386),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 321, DateTimeKind.Local).AddTicks(6262),
                             IsActive = true,
                             Nome = "Lauro",
                             Registro = "",
@@ -510,7 +511,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 2,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 83, DateTimeKind.Local).AddTicks(2035),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 325, DateTimeKind.Local).AddTicks(1356),
                             IsActive = true,
                             Nome = "Roberto",
                             Registro = "",
@@ -520,7 +521,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 3,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 83, DateTimeKind.Local).AddTicks(2102),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 325, DateTimeKind.Local).AddTicks(1419),
                             IsActive = true,
                             Nome = "Ronaldo",
                             Registro = "",
@@ -530,7 +531,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 4,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 83, DateTimeKind.Local).AddTicks(2106),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 325, DateTimeKind.Local).AddTicks(1423),
                             IsActive = true,
                             Nome = "Rodrigo",
                             Registro = "",
@@ -540,7 +541,7 @@ namespace WebApiCourse.API.Migrations
                         new
                         {
                             Id = 5,
-                            DataInicio = new DateTime(2020, 12, 7, 14, 43, 17, 83, DateTimeKind.Local).AddTicks(2107),
+                            DataInicio = new DateTime(2020, 12, 11, 17, 10, 50, 325, DateTimeKind.Local).AddTicks(1425),
                             IsActive = true,
                             Nome = "Alexandre",
                             Registro = "",
